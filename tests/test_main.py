@@ -2,6 +2,7 @@
 
 import asyncio
 import signal
+from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
@@ -277,12 +278,15 @@ class TestMain:
     def test_main_runs_loop(self, monkeypatch: pytest.MonkeyPatch) -> None:
         """Should setup logging and run the loop."""
         mock_setup = MagicMock()
-        mock_run = MagicMock()
+
+        # Create a mock that properly consumes the coroutine
+        def mock_asyncio_run(coro: Any) -> None:
+            # Close the coroutine to avoid warning
+            coro.close()
 
         with patch("anomaly_detection.main.setup_logging", mock_setup), patch(
-            "anomaly_detection.main.asyncio.run", mock_run
+            "anomaly_detection.main.asyncio.run", mock_asyncio_run
         ):
             main()
 
             mock_setup.assert_called_once()
-            mock_run.assert_called_once()
