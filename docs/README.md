@@ -11,12 +11,12 @@
 
 | # | Milestone | Status | Description |
 |---|-----------|--------|-------------|
-| M1 | [Bootstrap](./tasks/M1-bootstrap.md) | 🔲 | uv, config, logging |
-| M2 | [Data Pipeline](./tasks/M2-data-pipeline.md) | 🔲 | Prometheus client, preprocessing |
-| M3 | [Detector](./tasks/M3-detector.md) | 🔲 | TimesNet wrapper, inference |
-| M4 | [Output](./tasks/M4-output.md) | 🔲 | Prometheus metrics, Grafana annotations |
-| M5 | [Production](./tasks/M5-production.md) | 🔲 | Docker, health checks, k8s |
-| M6 | [Testing & CI](./tasks/M6-testing-ci.md) | 🔲 | pytest, GitHub Actions |
+| M1 | [Bootstrap](./tasks/M1-bootstrap.md) | ✅ | uv, config, logging |
+| M2 | [Data Pipeline](./tasks/M2-data-pipeline.md) | ✅ | Prometheus client, preprocessing |
+| M3 | [Detector](./tasks/M3-detector.md) | ✅ | TimesNet wrapper, inference |
+| M4 | [Output](./tasks/M4-output.md) | ✅ | Prometheus metrics, Grafana annotations |
+| M5 | [Production](./tasks/M5-production.md) | 🔶 | Docker, health checks, k8s (k8s pending) |
+| M6 | [Testing & CI](./tasks/M6-testing-ci.md) | 🔶 | pytest, GitHub Actions (CI pending) |
 
 ## Getting Started
 

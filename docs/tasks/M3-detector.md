@@ -325,12 +325,12 @@ class TestMockDetector:
 
 ## Checklist
 
-- [ ] 3.1 PyTorch added
-- [ ] 3.2 `TimesNetDetector` implemented
-- [ ] 3.3 `MockDetector` implemented
-- [ ] 3.4 Detector factory works
-- [ ] 3.5 Main loop runs inference
-- [ ] 3.6 Tests passing
+- [x] 3.1 PyTorch added (lazy import)
+- [x] 3.2 `TimesNetDetector` implemented
+- [x] 3.3 `MockDetector` implemented
+- [x] 3.4 Detector factory works
+- [x] 3.5 Main loop runs inference
+- [x] 3.6 Tests passing
 
 ## Done When
 
@@ -338,6 +338,8 @@ class TestMockDetector:
 make run
 # Logs show "score" entries for each metric with severity
 ```
+
+✅ **COMPLETED**
 
 ## Next: Training a Real Model
 

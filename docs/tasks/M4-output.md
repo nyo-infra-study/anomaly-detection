@@ -395,10 +395,10 @@ class TestGrafana:
 
 ## Checklist
 
-- [ ] 4.1 Prometheus metrics exporter works
-- [ ] 4.2 Grafana annotator works
-- [ ] 4.3 Main loop outputs to both
-- [ ] 4.4 Tests passing
+- [x] 4.1 Prometheus metrics exporter works
+- [x] 4.2 Grafana annotator works
+- [x] 4.3 Main loop outputs to both
+- [x] 4.4 Tests passing
 
 ## Done When
 
@@ -416,3 +416,5 @@ make run
 # 1. anomaly_score metric appears in Prometheus
 # 2. Annotations appear in Grafana when anomaly ends
 ```
+
+✅ **COMPLETED**

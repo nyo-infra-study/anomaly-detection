@@ -406,13 +406,13 @@ clean:
 
 ## Checklist
 
-- [ ] 6.1 pytest configured
-- [ ] 6.2 Integration tests pass
-- [ ] 6.3 Config tests pass
-- [ ] 6.4 Fixtures created
+- [x] 6.1 pytest configured
+- [x] 6.2 Integration tests pass
+- [x] 6.3 Config tests pass
+- [x] 6.4 Fixtures created
 - [ ] 6.5 GitHub Actions workflow works
 - [ ] 6.6 Pre-commit hooks installed
-- [ ] 6.7 Makefile updated
+- [x] 6.7 Makefile updated
 
 ## Done When
 
@@ -429,6 +429,8 @@ make lint
 # CI passes on GitHub
 git push  # → check Actions tab
 ```
+
+🔶 **PARTIALLY COMPLETED** (GitHub Actions and pre-commit not yet set up)
 
 ---
 

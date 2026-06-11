@@ -283,16 +283,16 @@ models/*.onnx
 
 ## Checklist
 
-- [ ] 1.1 `uv init` done
-- [ ] 1.2 Core deps added
-- [ ] 1.3 Dev deps added
-- [ ] 1.4 Directory structure created
-- [ ] 1.5 `.python-version` created
-- [ ] 1.6 `config.py` works
-- [ ] 1.7 `logging.py` works
-- [ ] 1.8 `main.py` runs and logs
-- [ ] 1.9 `Makefile` works (`make run`)
-- [ ] 1.10 `.gitignore` created
+- [x] 1.1 `uv init` done
+- [x] 1.2 Core deps added
+- [x] 1.3 Dev deps added
+- [x] 1.4 Directory structure created
+- [x] 1.5 `.python-version` created
+- [x] 1.6 `config.py` works
+- [x] 1.7 `logging.py` works
+- [x] 1.8 `main.py` runs and logs
+- [x] 1.9 `Makefile` works (`make run`)
+- [x] 1.10 `.gitignore` created
 
 ## Done When
 
@@ -300,3 +300,5 @@ models/*.onnx
 make run
 # Outputs JSON log with "anomaly-detection starting"
 ```
+
+✅ **COMPLETED**

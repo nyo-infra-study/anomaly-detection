@@ -462,11 +462,11 @@ stringData:
 
 ## Checklist
 
-- [ ] 5.1 Dockerfile builds
-- [ ] 5.2 Health endpoint works
-- [ ] 5.3 Graceful shutdown works
-- [ ] 5.4 docker-compose runs locally
-- [ ] 5.5 Retry logic added
+- [x] 5.1 Dockerfile builds
+- [x] 5.2 Health endpoint works
+- [x] 5.3 Graceful shutdown works
+- [x] 5.4 docker-compose runs locally
+- [x] 5.5 Retry logic added
 - [ ] 5.6 K8s manifests created
 
 ## Done When
@@ -483,3 +483,5 @@ curl http://localhost:8080/health
 docker-compose stop
 # Logs show "received shutdown signal" and "cleaning up"
 ```
+
+✅ **MOSTLY COMPLETED** (K8s manifests not yet created)

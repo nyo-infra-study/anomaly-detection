@@ -347,10 +347,10 @@ if __name__ == "__main__":
 
 ## Checklist
 
-- [ ] 2.1 `PrometheusClient` implemented
-- [ ] 2.2 `preprocessor.py` implemented
-- [ ] 2.3 Unit tests passing
-- [ ] 2.4 Main loop fetches and logs data shape
+- [x] 2.1 `PrometheusClient` implemented
+- [x] 2.2 `preprocessor.py` implemented
+- [x] 2.3 Unit tests passing
+- [x] 2.4 Main loop fetches and logs data shape
 
 ## Done When
 
@@ -361,3 +361,5 @@ make run
 
 # Logs show "data ready" with correct shape
 ```
+
+✅ **COMPLETED**
