@@ -120,3 +120,15 @@ class TestRollingStatisticalDetector:
 
         # Should detect the spike
         assert scores["metric_a"] > 0.7
+
+
+    def test_predict_generates_temp_names(self) -> None:
+        """predict() should generate temporary metric names for interface compatibility."""
+        detector = RollingStatisticalDetector()
+        detector.load()
+
+        data = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], dtype=np.float32)
+        scores = detector.predict(data)
+
+        assert scores.shape == (2,)
+        assert all(isinstance(s, (float, np.floating)) for s in scores)

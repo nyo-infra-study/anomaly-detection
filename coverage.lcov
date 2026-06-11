@@ -1,0 +1,850 @@
+SF:src/anomaly_detection/__init__.py
+DA:3,1
+LF:1
+LH:1
+end_of_record
+SF:src/anomaly_detection/config.py
+DA:3,1
+DA:6,1
+DA:9,1
+DA:12,1
+DA:13,1
+DA:14,1
+DA:17,1
+DA:18,1
+DA:19,1
+DA:22,1
+DA:25,1
+DA:26,1
+DA:32,1
+DA:35,1
+DA:36,1
+DA:37,1
+DA:38,1
+DA:41,1
+DA:42,1
+DA:45,1
+DA:48,1
+LF:21
+LH:21
+end_of_record
+SF:src/anomaly_detection/data/__init__.py
+end_of_record
+SF:src/anomaly_detection/data/prometheus.py
+DA:3,1
+DA:4,1
+DA:6,1
+DA:8,1
+DA:9,1
+DA:10,1
+DA:12,1
+DA:15,1
+DA:18,1
+DA:19,1
+DA:20,1
+DA:22,1
+DA:23,1
+DA:39,1
+DA:46,1
+DA:47,1
+DA:49,1
+DA:50,1
+DA:52,1
+DA:53,1
+DA:54,1
+DA:56,1
+DA:57,1
+DA:59,1
+DA:66,1
+DA:67,1
+DA:68,1
+DA:70,1
+DA:72,1
+LF:29
+LH:29
+FN:18,20,PrometheusClient.__init__
+FNDA:1,PrometheusClient.__init__
+FN:23,57,PrometheusClient.query_range
+FNDA:1,PrometheusClient.query_range
+FN:59,68,PrometheusClient.fetch_window
+FNDA:1,PrometheusClient.fetch_window
+FN:70,72,PrometheusClient.close
+FNDA:1,PrometheusClient.close
+FNF:4
+FNH:4
+BRDA:53,0,jump to line 54,1
+BRDA:53,0,jump to line 56,1
+BRF:2
+BRH:2
+end_of_record
+SF:src/anomaly_detection/detector/__init__.py
+DA:3,1
+DA:4,1
+DA:6,1
+DA:7,1
+DA:18,1
+DA:20,1
+DA:29,1
+DA:41,1
+DA:43,1
+DA:44,1
+DA:46,1
+DA:47,1
+DA:49,1
+DA:50,1
+DA:52,1
+DA:53,1
+DA:58,1
+DA:59,1
+DA:61,1
+DA:62,1
+DA:64,1
+DA:65,1
+DA:67,1
+DA:71,1
+DA:73,1
+DA:74,1
+DA:76,1
+DA:77,1
+DA:81,1
+DA:83,1
+DA:84,1
+DA:86,1
+DA:87,1
+DA:89,1
+DA:91,1
+DA:95,1
+LF:36
+LH:36
+FN:29,95,get_detector
+FNDA:1,get_detector
+FNF:1
+FNH:1
+BRDA:43,0,jump to line 44,1
+BRDA:43,0,jump to line 49,1
+BRDA:49,0,jump to line 50,1
+BRDA:49,0,jump to line 58,1
+BRDA:58,0,jump to line 59,1
+BRDA:58,0,jump to line 64,1
+BRDA:64,0,jump to line 65,1
+BRDA:64,0,jump to line 73,1
+BRDA:73,0,jump to line 74,1
+BRDA:73,0,jump to line 81,1
+BRDA:83,0,jump to line 84,1
+BRDA:83,0,jump to line 89,1
+BRF:12
+BRH:12
+end_of_record
+SF:src/anomaly_detection/detector/hybrid.py
+DA:8,1
+DA:10,1
+DA:11,1
+DA:13,1
+DA:14,1
+DA:16,1
+DA:19,1
+DA:31,1
+DA:45,1
+DA:46,1
+DA:47,1
+DA:49,1
+DA:53,1
+DA:55,1
+DA:56,1
+DA:58,1
+DA:59,1
+DA:61,1
+DA:63,1
+DA:66,1
+DA:67,1
+DA:72,1
+DA:73,1
+DA:75,1
+DA:78,1
+DA:79,1
+DA:80,1
+DA:82,1
+DA:92,1
+DA:93,1
+DA:94,1
+DA:95,1
+DA:98,1
+DA:99,1
+DA:100,1
+DA:101,1
+DA:104,1
+DA:106,1
+DA:108,1
+DA:109,1
+DA:111,1
+DA:129,1
+DA:132,1
+DA:133,1
+DA:134,1
+DA:135,1
+DA:137,1
+DA:138,1
+DA:139,1
+DA:140,1
+DA:142,1
+DA:143,1
+DA:146,1
+DA:147,1
+DA:148,1
+DA:150,1
+DA:151,1
+DA:158,1
+DA:159,1
+DA:160,1
+DA:162,1
+DA:163,1
+DA:169,1
+DA:175,1
+DA:177,1
+DA:183,1
+DA:184,1
+DA:185,1
+LF:68
+LH:68
+FN:31,59,HybridDetector.__init__
+FNDA:1,HybridDetector.__init__
+FN:61,80,HybridDetector.load
+FNDA:1,HybridDetector.load
+FN:82,104,HybridDetector._extract_service_name
+FNDA:1,HybridDetector._extract_service_name
+FN:106,109,HybridDetector._is_critical
+FNDA:1,HybridDetector._is_critical
+FN:111,175,HybridDetector.predict_with_labels
+FNDA:1,HybridDetector.predict_with_labels
+FN:177,185,HybridDetector.predict
+FNDA:1,HybridDetector.predict
+FNF:6
+FNH:6
+BRDA:45,0,jump to line 46,1
+BRDA:45,0,jump to line 47,1
+BRDA:47,0,jump to line 49,1
+BRDA:47,0,jump to line 53,1
+BRDA:66,0,jump to line 67,1
+BRDA:66,0,jump to line 75,1
+BRDA:92,0,jump to line 93,1
+BRDA:92,0,jump to line 98,1
+BRDA:98,0,jump to line 99,1
+BRDA:98,0,jump to line 104,1
+BRDA:137,0,jump to line 138,1
+BRDA:137,0,jump to line 146,1
+BRDA:138,0,jump to line 139,1
+BRDA:138,0,jump to line 142,1
+BRDA:146,0,jump to line 147,1
+BRDA:146,0,jump to line 158,1
+BRDA:150,0,jump to line 151,1
+BRDA:150,0,jump to line 158,1
+BRDA:158,0,jump to line 159,1
+BRDA:158,0,jump to line 169,1
+BRDA:162,0,jump to line 163,1
+BRDA:162,0,jump to line 169,1
+BRDA:183,0,jump to line 184,1
+BRDA:183,0,jump to line 185,1
+BRF:24
+BRH:24
+end_of_record
+SF:src/anomaly_detection/detector/mock.py
+DA:3,1
+DA:5,1
+DA:6,1
+DA:8,1
+DA:10,1
+DA:13,1
+DA:19,1
+DA:20,1
+DA:22,1
+DA:24,1
+DA:26,1
+DA:36,1
+DA:39,1
+DA:40,1
+DA:43,1
+DA:44,1
+DA:45,1
+DA:46,1
+DA:47,1
+DA:48,1
+DA:50,1
+DA:52,1
+DA:58,1
+DA:59,1
+LF:24
+LH:24
+FN:19,20,MockDetector.__init__
+FNDA:1,MockDetector.__init__
+FN:22,24,MockDetector.load
+FNDA:1,MockDetector.load
+FN:26,50,MockDetector.predict
+FNDA:1,MockDetector.predict
+FN:52,59,MockDetector.predict_with_labels
+FNDA:1,MockDetector.predict_with_labels
+FNF:4
+FNH:4
+BRDA:46,0,jump to line 47,1
+BRDA:46,0,jump to line 50,1
+BRF:2
+BRH:2
+end_of_record
+SF:src/anomaly_detection/detector/preprocessor.py
+DA:3,1
+DA:5,1
+DA:6,1
+DA:8,1
+DA:10,1
+DA:13,1
+DA:27,1
+DA:28,1
+DA:31,1
+DA:32,1
+DA:33,1
+DA:35,1
+DA:36,1
+DA:37,1
+DA:41,1
+DA:42,1
+DA:43,1
+DA:44,1
+DA:46,1
+DA:47,1
+DA:49,1
+DA:52,1
+DA:61,1
+DA:62,1
+DA:63,1
+DA:65,1
+DA:66,1
+DA:69,1
+DA:73,1
+DA:75,1
+DA:76,1
+DA:77,1
+DA:79,1
+DA:82,1
+DA:83,1
+LF:35
+LH:35
+FN:13,49,prometheus_to_array
+FNDA:1,prometheus_to_array
+FN:52,66,normalize
+FNDA:1,normalize
+FN:69,83,pad_or_truncate
+FNDA:1,pad_or_truncate
+FNF:3
+FNH:3
+BRDA:27,0,jump to line 28,1
+BRDA:27,0,jump to line 31,1
+BRDA:32,0,jump to line 33,1
+BRDA:32,0,jump to line 41,1
+BRDA:42,0,jump to line 43,1
+BRDA:42,0,jump to line 46,1
+BRDA:75,0,jump to line 76,1
+BRDA:75,0,jump to line 77,1
+BRDA:77,0,jump to line 79,1
+BRDA:77,0,jump to line 82,1
+BRF:10
+BRH:10
+end_of_record
+SF:src/anomaly_detection/detector/statistical.py
+DA:10,1
+DA:12,1
+DA:13,1
+DA:15,1
+DA:17,1
+DA:20,1
+DA:33,1
+DA:43,1
+DA:44,1
+DA:46,1
+DA:48,1
+DA:50,1
+DA:61,1
+DA:64,1
+DA:65,1
+DA:66,1
+DA:67,1
+DA:70,1
+DA:76,1
+DA:77,1
+DA:79,1
+DA:81,1
+DA:87,1
+DA:88,1
+DA:91,1
+DA:99,1
+DA:105,1
+DA:106,1
+DA:107,1
+DA:110,1
+DA:111,1
+DA:113,1
+DA:115,1
+DA:121,1
+DA:133,1
+DA:135,1
+DA:136,1
+DA:137,1
+DA:138,1
+DA:139,1
+DA:142,1
+DA:143,1
+DA:144,1
+DA:146,1
+DA:149,1
+DA:154,1
+DA:155,1
+DA:158,1
+DA:159,1
+DA:161,1
+DA:163,1
+DA:165,1
+DA:166,1
+DA:167,1
+LF:54
+LH:54
+FN:33,44,StatisticalDetector.__init__
+FNDA:1,StatisticalDetector.__init__
+FN:46,48,StatisticalDetector.load
+FNDA:1,StatisticalDetector.load
+FN:50,79,StatisticalDetector.predict
+FNDA:1,StatisticalDetector.predict
+FN:81,88,StatisticalDetector.predict_with_labels
+FNDA:1,StatisticalDetector.predict_with_labels
+FN:99,111,RollingStatisticalDetector.__init__
+FNDA:1,RollingStatisticalDetector.__init__
+FN:113,119,RollingStatisticalDetector.load
+FNDA:1,RollingStatisticalDetector.load
+FN:121,161,RollingStatisticalDetector.predict_with_labels
+FNDA:1,RollingStatisticalDetector.predict_with_labels
+FN:163,167,RollingStatisticalDetector.predict
+FNDA:1,RollingStatisticalDetector.predict
+FNF:8
+FNH:8
+BRDA:135,0,jump to line 136,1
+BRDA:135,0,jump to line 161,1
+BRDA:142,0,jump to line 143,1
+BRDA:142,0,jump to line 146,1
+BRF:4
+BRH:4
+end_of_record
+SF:src/anomaly_detection/detector/timesnet.py
+DA:3,1
+DA:4,1
+DA:6,1
+DA:8,1
+DA:9,1
+DA:11,1
+DA:14,1
+DA:21,1
+DA:22,1
+DA:23,1
+DA:24,1
+DA:25,1
+DA:27,1
+DA:29,1
+DA:30,1
+DA:32,1
+DA:35,1
+DA:36,1
+DA:37,1
+DA:38,1
+DA:59,1
+DA:69,1
+DA:70,1
+DA:92,1
+DA:98,1
+DA:99,1
+LF:26
+LH:26
+FN:21,25,TimesNetDetector.__init__
+FNDA:1,TimesNetDetector.__init__
+FN:27,57,TimesNetDetector.load
+FNDA:1,TimesNetDetector.load
+FN:59,90,TimesNetDetector.predict
+FNDA:1,TimesNetDetector.predict
+FN:92,99,TimesNetDetector.predict_with_labels
+FNDA:1,TimesNetDetector.predict_with_labels
+FNF:4
+FNH:4
+BRDA:29,0,jump to line 30,1
+BRDA:29,0,jump to line 32,1
+BRF:2
+BRH:2
+end_of_record
+SF:src/anomaly_detection/health.py
+DA:3,1
+DA:5,1
+DA:7,1
+DA:8,1
+DA:10,1
+DA:13,1
+DA:14,1
+DA:17,1
+DA:20,1
+DA:23,1
+DA:26,1
+DA:29,1
+DA:31,1
+DA:32,1
+DA:33,1
+DA:36,1
+DA:38,1
+DA:39,1
+DA:41,1
+DA:42,1
+DA:43,1
+DA:46,1
+DA:48,1
+DA:50,1
+DA:51,1
+DA:52,1
+DA:54,1
+DA:55,1
+DA:56,1
+DA:57,1
+DA:59,1
+DA:60,1
+LF:32
+LH:32
+FN:17,20,set_healthy
+FNDA:1,set_healthy
+FN:23,26,record_successful_cycle
+FNDA:1,record_successful_cycle
+FN:29,33,health_handler
+FNDA:1,health_handler
+FN:36,43,ready_handler
+FNDA:1,ready_handler
+FN:46,60,start_health_server
+FNDA:1,start_health_server
+FNF:5
+FNH:5
+BRDA:31,0,jump to line 32,1
+BRDA:31,0,jump to line 33,1
+BRDA:41,0,jump to line 42,1
+BRDA:41,0,jump to line 43,1
+BRF:4
+BRH:4
+end_of_record
+SF:src/anomaly_detection/main.py
+DA:3,1
+DA:4,1
+DA:5,1
+DA:7,1
+DA:8,1
+DA:9,1
+DA:10,1
+DA:15,1
+DA:20,1
+DA:21,1
+DA:22,1
+DA:24,1
+DA:27,1
+DA:30,1
+DA:32,1
+DA:33,1
+DA:34,1
+DA:37,1
+DA:39,1
+DA:40,1
+DA:41,1
+DA:44,1
+DA:47,1
+DA:50,1
+DA:51,1
+DA:52,1
+DA:55,1
+DA:58,1
+DA:59,1
+DA:60,1
+DA:61,1
+DA:63,1
+DA:65,1
+DA:66,1
+DA:67,1
+DA:68,1
+DA:71,1
+DA:77,1
+DA:78,1
+DA:79,1
+DA:80,1
+DA:81,1
+DA:83,1
+DA:84,1
+DA:90,1
+DA:93,1
+DA:94,1
+DA:96,1
+DA:97,1
+DA:98,1
+DA:101,1
+DA:103,1
+DA:108,1
+DA:110,1
+DA:111,1
+DA:112,1
+DA:115,1
+DA:118,1
+DA:119,1
+DA:120,1
+DA:121,1
+DA:122,1
+DA:125,1
+DA:127,1
+DA:128,1
+DA:129,1
+DA:131,1
+DA:132,1
+DA:133,1
+DA:134,1
+DA:137,1
+DA:139,1
+DA:140,1
+DA:147,1
+DA:148,1
+LF:75
+LH:75
+FN:30,34,handle_shutdown
+FNDA:1,handle_shutdown
+FN:37,41,_extract_score
+FNDA:1,_extract_score
+FN:44,122,run_loop
+FNDA:1,run_loop
+FN:125,134,_wait_or_shutdown
+FNDA:1,_wait_or_shutdown
+FN:137,148,main
+FNDA:1,main
+FNF:5
+FNH:5
+BRDA:33,0,jump to line 34,1
+BRDA:33,0,return from function 'handle_shutdown',1
+BRDA:39,0,jump to line 40,1
+BRDA:39,0,jump to line 41,1
+BRDA:51,0,jump to line 52,1
+BRDA:51,0,jump to line 55,1
+BRDA:66,0,jump to line 67,1
+BRDA:66,0,jump to line 118,1
+BRDA:78,0,jump to line 79,1
+BRDA:78,0,jump to line 83,1
+BRDA:96,0,jump to line 97,1
+BRDA:96,0,jump to line 101,1
+BRDA:127,0,jump to line 128,1
+BRDA:127,0,jump to line 131,1
+BRF:14
+BRH:14
+end_of_record
+SF:src/anomaly_detection/output/__init__.py
+end_of_record
+SF:src/anomaly_detection/output/grafana.py
+DA:3,1
+DA:4,1
+DA:5,1
+DA:7,1
+DA:9,1
+DA:10,1
+DA:12,1
+DA:15,1
+DA:16,1
+DA:19,1
+DA:20,1
+DA:21,1
+DA:24,1
+DA:30,1
+DA:36,1
+DA:37,1
+DA:38,1
+DA:40,1
+DA:41,1
+DA:42,1
+DA:44,1
+DA:57,1
+DA:59,1
+DA:70,1
+DA:71,1
+DA:72,1
+DA:75,1
+DA:76,1
+DA:77,1
+DA:80,1
+DA:81,1
+DA:82,1
+DA:83,1
+DA:84,1
+DA:87,1
+DA:88,1
+DA:91,1
+DA:92,1
+DA:93,1
+DA:99,1
+DA:100,1
+DA:101,1
+DA:103,1
+DA:111,1
+DA:118,1
+DA:119,1
+DA:121,1
+DA:122,1
+DA:126,1
+DA:128,1
+DA:134,1
+DA:135,1
+DA:141,1
+DA:143,1
+DA:147,1
+DA:150,1
+DA:153,1
+DA:154,1
+DA:155,1
+LF:59
+LH:59
+FN:30,57,AnomalyAnnotator.__init__
+FNDA:1,AnomalyAnnotator.__init__
+FN:59,101,AnomalyAnnotator.update
+FNDA:1,AnomalyAnnotator.update
+FN:103,139,AnomalyAnnotator._write_annotation
+FNDA:1,AnomalyAnnotator._write_annotation
+FN:141,143,AnomalyAnnotator.close
+FNDA:1,AnomalyAnnotator.close
+FN:150,155,get_annotator
+FNDA:1,get_annotator
+FNF:5
+FNH:5
+BRDA:41,0,jump to line 42,1
+BRDA:41,0,jump to line 44,1
+BRDA:75,0,jump to line 76,1
+BRDA:75,0,jump to line 77,1
+BRDA:80,0,jump to line 81,1
+BRDA:80,0,jump to line 87,1
+BRDA:87,0,jump to line 88,1
+BRDA:87,0,jump to line 91,1
+BRDA:91,0,jump to line 92,1
+BRDA:91,0,return from function 'update',1
+BRDA:92,0,jump to line 93,1
+BRDA:92,0,jump to line 99,1
+BRDA:118,0,jump to line 119,1
+BRDA:118,0,jump to line 121,1
+BRDA:153,0,jump to line 154,1
+BRDA:153,0,jump to line 155,1
+BRF:16
+BRH:16
+end_of_record
+SF:src/anomaly_detection/output/metrics.py
+DA:3,1
+DA:5,1
+DA:7,1
+DA:8,1
+DA:10,1
+DA:13,1
+DA:20,1
+DA:32,1
+DA:34,1
+DA:36,1
+DA:37,1
+DA:38,1
+DA:40,1
+DA:41,1
+DA:43,1
+DA:44,1
+DA:50,1
+DA:53,1
+DA:55,1
+DA:56,1
+DA:57,1
+DA:59,1
+DA:60,1
+DA:65,1
+DA:66,1
+DA:67,1
+LF:26
+LH:26
+FN:20,50,update_scores
+FNDA:1,update_scores
+FN:53,67,push_metrics
+FNDA:1,push_metrics
+FNF:2
+FNH:2
+BRDA:34,0,jump to line 36,1
+BRDA:34,0,jump to line 50,1
+BRDA:36,0,jump to line 37,1
+BRDA:36,0,jump to line 40,1
+BRDA:55,0,jump to line 56,1
+BRDA:55,0,jump to line 59,1
+BRF:6
+BRH:6
+end_of_record
+SF:src/anomaly_detection/utils/__init__.py
+end_of_record
+SF:src/anomaly_detection/utils/logging.py
+DA:3,1
+DA:5,1
+DA:7,1
+DA:10,1
+DA:13,1
+DA:18,1
+DA:25,1
+DA:26,1
+DA:28,1
+DA:30,1
+DA:41,1
+DA:43,1
+LF:12
+LH:12
+FN:10,38,setup_logging
+FNDA:1,setup_logging
+FN:41,43,get_logger
+FNDA:1,get_logger
+FNF:2
+FNH:2
+BRDA:25,0,jump to line 26,1
+BRDA:25,0,jump to line 28,1
+BRF:2
+BRH:2
+end_of_record
+SF:src/anomaly_detection/utils/retry.py
+DA:3,1
+DA:4,1
+DA:5,1
+DA:6,1
+DA:8,1
+DA:10,1
+DA:12,1
+DA:13,1
+DA:16,1
+DA:24,1
+DA:25,1
+DA:26,1
+DA:27,1
+DA:28,1
+DA:30,1
+DA:31,1
+DA:32,1
+DA:33,1
+DA:34,1
+DA:35,1
+DA:36,1
+DA:44,1
+DA:45,1
+DA:47,1
+DA:53,1
+DA:54,1
+DA:57,1
+DA:59,1
+LF:28
+LH:28
+FN:16,59,retry_async
+FNDA:1,retry_async
+FN:24,57,retry_async.decorator
+FNDA:1,retry_async.decorator
+FN:26,55,retry_async.decorator.wrapper
+FNDA:1,retry_async.decorator.wrapper
+FNF:3
+FNH:3
+BRDA:30,0,jump to line 31,1
+BRDA:30,0,jump to line 53,1
+BRDA:35,0,jump to line 36,1
+BRDA:35,0,jump to line 47,1
+BRF:4
+BRH:4
+end_of_record

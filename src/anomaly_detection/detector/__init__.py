@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Union
 from anomaly_detection.config import settings
 from anomaly_detection.utils.logging import get_logger
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from anomaly_detection.detector.hybrid import HybridDetector
     from anomaly_detection.detector.mock import MockDetector
     from anomaly_detection.detector.statistical import (

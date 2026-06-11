@@ -1,6 +1,6 @@
 """Grafana annotation writer for Datadog-style shaded regions."""
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
@@ -54,10 +54,7 @@ class AnomalyAnnotator:
         )
 
         # Track state per metric
-        self.states: dict[str, AnomalyState] = field(default_factory=dict)
-
-    def __post_init__(self) -> None:
-        self.states = {}
+        self.states: dict[str, AnomalyState] = {}
 
     async def update(
         self,
@@ -155,5 +152,4 @@ def get_annotator() -> AnomalyAnnotator:
     global _annotator
     if _annotator is None:
         _annotator = AnomalyAnnotator()
-        _annotator.states = {}  # Initialize states dict
     return _annotator

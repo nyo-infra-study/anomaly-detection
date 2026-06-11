@@ -236,3 +236,63 @@ class TestHybridDetectorWithConfig:
         detector = HybridDetector()
         # With empty string, critical_services should be empty set
         assert detector.critical_services == set()
+
+
+
+class TestHybridDetectorConfigParsing:
+    """Tests for config-based initialization."""
+
+    def test_init_reads_from_settings(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        """Should parse critical_services from settings when not passed as argument."""
+        monkeypatch.setenv("CRITICAL_SERVICES", "checkout,payments,auth")
+
+        from anomaly_detection.config import Settings
+
+        with pytest.MonkeyPatch.context() as m:
+            m.setattr(
+                "anomaly_detection.detector.hybrid.settings",
+                Settings(),
+            )
+            # Don't pass critical_services - should read from settings
+            detector = HybridDetector(critical_services=None)
+            assert detector.critical_services == {"checkout", "payments", "auth"}
+
+    def test_init_with_spaces_in_config(
+        self, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """Should strip whitespace from service names."""
+        monkeypatch.setenv("CRITICAL_SERVICES", " checkout , payments , auth ")
+
+        from anomaly_detection.config import Settings
+
+        with pytest.MonkeyPatch.context() as m:
+            m.setattr(
+                "anomaly_detection.detector.hybrid.settings",
+                Settings(),
+            )
+            detector = HybridDetector(critical_services=None)
+            assert detector.critical_services == {"checkout", "payments", "auth"}
+
+
+    def test_all_metrics_are_critical(self) -> None:
+        """Should handle case where all metrics are critical (no default routing)."""
+        detector = HybridDetector(
+            critical_services=["checkout", "payments"],
+            critical_detector_type="mock",
+            default_detector_type="mock",
+        )
+        detector.load()
+
+        # All metrics belong to critical services
+        data = np.random.randn(2, 10).astype(np.float32)
+        metric_names = [
+            'latency{service="checkout"}',
+            'latency{service="payments"}',
+        ]
+
+        results = detector.predict_with_labels(data, metric_names)
+
+        assert len(results) == 2
+        # All should use critical detector
+        for name in metric_names:
+            assert results[name]["detector"] == "mock"

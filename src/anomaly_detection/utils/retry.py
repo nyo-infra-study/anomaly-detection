@@ -52,7 +52,7 @@ def retry_async(
 
             if last_exception:
                 raise last_exception
-            raise RuntimeError("Unexpected retry state")
+            raise RuntimeError("Unexpected retry state")  # pragma: no cover
 
         return wrapper
 
