@@ -2,6 +2,7 @@
 
 import asyncio
 import signal
+from typing import Any
 
 from anomaly_detection.config import settings
 from anomaly_detection.data.prometheus import PrometheusClient
@@ -31,6 +32,13 @@ def handle_shutdown(sig: signal.Signals) -> None:
     log.info("received shutdown signal", signal=sig.name)
     if _shutdown_event:
         _shutdown_event.set()
+
+
+def _extract_score(value: float | dict[str, Any]) -> float:
+    """Extract score from either simple float or hybrid dict format."""
+    if isinstance(value, dict):
+        return value["score"]
+    return value
 
 
 async def run_loop() -> None:
@@ -76,19 +84,27 @@ async def run_loop() -> None:
                 data_norm, means, stds = normalize(data)
 
                 # 3. Inference
+                # predict_with_labels returns either:
+                #   - dict[str, float] for simple detectors
+                #   - dict[str, dict] for hybrid detector (with score, detector, service keys)
                 scores = detector.predict_with_labels(data_norm, metric_names)
 
                 # 4. Output
                 update_scores(scores)
                 push_metrics()
 
-                for metric_name, score in scores.items():
+                for metric_name, value in scores.items():
+                    score = _extract_score(value)
                     await annotator.update(metric_name, score)
 
                 # Mark cycle complete
                 record_successful_cycle()
 
-                high_count = sum(1 for s in scores.values() if s > settings.anomaly_threshold)
+                high_count = sum(
+                    1
+                    for v in scores.values()
+                    if _extract_score(v) > settings.anomaly_threshold
+                )
                 log.info("cycle complete", total=len(scores), anomalies=high_count)
 
             except Exception as e:

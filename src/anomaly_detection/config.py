@@ -18,12 +18,18 @@ class Settings(BaseSettings):
     window_size: int = 96
     anomaly_threshold: float = 0.75
 
-    # Detector type: "auto", "timesnet", "statistical", "rolling", "mock"
+    # Detector type: "auto", "timesnet", "statistical", "rolling", "hybrid", "mock"
     detector_type: str = "auto"
 
     # Statistical detector settings
     z_threshold: float = 2.5  # Z-score threshold for anomaly
     ema_alpha: float = 0.1  # EMA smoothing factor for rolling detector
+
+    # Hybrid detector settings
+    # Comma-separated list of service names to use TimesNet for
+    # e.g., "checkout,payments,auth" — these get the full CNN-based detector
+    # All other services use the lightweight statistical detector
+    critical_services: str = ""
 
     # Output
     pushgateway_url: str | None = None

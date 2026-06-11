@@ -7,6 +7,7 @@ from anomaly_detection.config import settings
 from anomaly_detection.utils.logging import get_logger
 
 if TYPE_CHECKING:
+    from anomaly_detection.detector.hybrid import HybridDetector
     from anomaly_detection.detector.mock import MockDetector
     from anomaly_detection.detector.statistical import (
         RollingStatisticalDetector,
@@ -21,6 +22,7 @@ DetectorType = Union[
     "TimesNetDetector",
     "StatisticalDetector",
     "RollingStatisticalDetector",
+    "HybridDetector",
 ]
 
 
@@ -58,6 +60,15 @@ def get_detector(detector_type: str | None = None) -> DetectorType:
 
         log.info("using TimesNet detector", model_path=settings.model_path)
         return TimesNetDetector()
+
+    elif dtype == "hybrid":
+        from anomaly_detection.detector.hybrid import HybridDetector
+
+        log.info(
+            "using hybrid detector",
+            critical_services=settings.critical_services or "(none)",
+        )
+        return HybridDetector()
 
     elif dtype == "mock":
         from anomaly_detection.detector.mock import MockDetector
