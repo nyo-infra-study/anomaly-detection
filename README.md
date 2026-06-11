@@ -24,9 +24,9 @@ flowchart LR
         Fetch["Fetch
         PromQL"] --> Preproc["Preprocess
         normalize"]
-        Preproc --> TimesNet["TimesNet
-        inference"]
-        TimesNet --> Output["Output"]
+        Preproc --> Detect["Detect
+        hybrid routing"]
+        Detect --> Output["Output"]
     end
 
     Prom1[(Prometheus)] --> Fetch
@@ -43,11 +43,12 @@ All config via environment variables:
 | `PROMETHEUS_URL` | `http://localhost:9090` | Prometheus/Gigapipe URL |
 | `PROMETHEUS_QUERY` | `up` | PromQL query for metrics |
 | `FETCH_INTERVAL_SECONDS` | `60` | Seconds between cycles |
-| `DETECTOR_TYPE` | `auto` | `auto`, `timesnet`, `statistical`, `rolling`, `mock` |
+| `DETECTOR_TYPE` | `auto` | `auto`, `timesnet`, `statistical`, `rolling`, `hybrid`, `mock` |
 | `MODEL_PATH` | `models/timesnet.pt` | Path to trained model (for timesnet) |
 | `ANOMALY_THRESHOLD` | `0.75` | Score above this = anomaly |
 | `Z_THRESHOLD` | `2.5` | Z-score threshold (for statistical) |
 | `EMA_ALPHA` | `0.1` | EMA smoothing (for rolling) |
+| `CRITICAL_SERVICES` | - | Comma-separated list for hybrid detector |
 | `GRAFANA_URL` | - | Grafana URL for annotations |
 | `GRAFANA_API_TOKEN` | - | Grafana service account token |
 | `LOG_LEVEL` | `INFO` | Logging level |
@@ -55,19 +56,25 @@ All config via environment variables:
 
 ## Detector Options
 
-### 1. Statistical (no training needed)
+### 1. Hybrid (recommended for production)
+```bash
+DETECTOR_TYPE=hybrid CRITICAL_SERVICES=api,payments make run
+```
+Uses TimesNet for critical services, statistical for others.
+
+### 2. Statistical (no training needed)
 ```bash
 DETECTOR_TYPE=statistical make run
 ```
 Uses Z-score: if last value is > 2.5 standard deviations from window mean → anomaly.
 
-### 2. Rolling Statistical (maintains history)
+### 3. Rolling Statistical (maintains history)
 ```bash
 DETECTOR_TYPE=rolling make run
 ```
 Uses exponential moving average (EMA) for more stable baselines across cycles.
 
-### 3. TimesNet (CNN-based, needs trained model)
+### 4. TimesNet (CNN-based, needs trained model)
 ```bash
 # First, get a model (see scripts/download_model.py)
 python scripts/download_model.py --train --dataset SMD
@@ -76,7 +83,7 @@ python scripts/download_model.py --train --dataset SMD
 DETECTOR_TYPE=timesnet make run
 ```
 
-### 4. Auto (default)
+### 5. Auto (default)
 ```bash
 make run
 ```
@@ -91,7 +98,7 @@ make fmt
 # Lint
 make lint
 
-# Test with coverage
+# Test with coverage (100%)
 make test-cov
 ```
 
@@ -107,6 +114,4 @@ curl http://localhost:8080/health
 
 ## Documentation
 
-See [docs/](./docs/) for:
-- [Project Plan](./docs/PLAN.md)
-- [Task Breakdowns](./docs/tasks/)
+See [docs/](./docs/) for architecture details and backlog.
