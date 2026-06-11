@@ -1,0 +1,15 @@
+# Minimal Prometheus config for local development
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Anomaly detection service health
+  - job_name: 'anomaly-detection'
+    static_configs:
+      - targets: ['anomaly-detection:8080']
