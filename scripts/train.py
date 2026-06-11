@@ -75,10 +75,25 @@ def find_tslib_path() -> Path:
     )
 
 
-def check_dataset(tslib_path: Path, dataset: str) -> bool:
-    """Check if dataset exists."""
-    dataset_path = tslib_path / "dataset" / dataset
-    return dataset_path.exists() and any(dataset_path.iterdir())
+def find_dataset_path(tslib_path: Path, dataset: str) -> Path | None:
+    """Find dataset in various locations."""
+    # Check in TSLib first
+    tslib_dataset = tslib_path / "dataset" / dataset
+    if tslib_dataset.exists() and any(tslib_dataset.iterdir()):
+        return tslib_path / "dataset"
+    
+    # Check in anomaly-detection/dataset
+    script_dir = Path(__file__).parent.parent
+    local_dataset = script_dir / "dataset" / dataset
+    if local_dataset.exists() and any(local_dataset.iterdir()):
+        return script_dir / "dataset"
+    
+    return None
+
+
+def check_dataset(tslib_path: Path, dataset: str) -> Path | None:
+    """Check if dataset exists and return its root path."""
+    return find_dataset_path(tslib_path, dataset)
 
 
 def train(args: argparse.Namespace) -> Path:
@@ -87,8 +102,9 @@ def train(args: argparse.Namespace) -> Path:
     config = DATASET_CONFIGS[args.dataset]
     
     # Check dataset
-    if not check_dataset(tslib_path, args.dataset):
-        print(f"\n❌ Dataset '{args.dataset}' not found at {tslib_path / 'dataset' / args.dataset}")
+    dataset_root = check_dataset(tslib_path, args.dataset)
+    if not dataset_root:
+        print(f"\n❌ Dataset '{args.dataset}' not found")
         print(f"\nDownload datasets from: {config['download_url']}")
         print(f"Then extract to: {tslib_path / 'dataset/'}")
         print("\nExpected structure:")
@@ -98,17 +114,18 @@ def train(args: argparse.Namespace) -> Path:
         print(f"    └── test_label.npy")
         sys.exit(1)
     
-    print(f"✓ Dataset found: {args.dataset}")
+    print(f"✓ Dataset found: {dataset_root / args.dataset}")
     print(f"  Features: {config['enc_in']}")
     print(f"  Sequence length: {args.seq_len or config['seq_len']}")
     print(f"  Epochs: {args.epochs}")
     
-    # Build training command
+    # Build training command using full path to run.py
+    run_py = tslib_path / "run.py"
     cmd = [
-        sys.executable, "run.py",
+        sys.executable, str(run_py),
         "--task_name", "anomaly_detection",
         "--is_training", "1",
-        "--root_path", f"./dataset/{args.dataset}",
+        "--root_path", str(dataset_root / args.dataset),
         "--model_id", args.dataset,
         "--model", "TimesNet",
         "--data", args.dataset,
@@ -135,20 +152,30 @@ def train(args: argparse.Namespace) -> Path:
     print(f"\n🚀 Starting training...")
     print(f"   Command: {' '.join(cmd)}\n")
     
-    # Run training
-    result = subprocess.run(cmd, cwd=tslib_path)
+    # Run training with TSLib in PYTHONPATH
+    env = os.environ.copy()
+    existing_pythonpath = env.get("PYTHONPATH", "")
+    env["PYTHONPATH"] = f"{tslib_path}:{existing_pythonpath}" if existing_pythonpath else str(tslib_path)
+    
+    # Run from TSLib directory so it can find the models folder
+    result = subprocess.run(cmd, env=env, cwd=str(tslib_path), shell=False)
     
     if result.returncode != 0:
         print("❌ Training failed")
         sys.exit(1)
     
-    # Find the checkpoint
+    # Find the checkpoint (created in TSLib directory since we ran from there)
     checkpoint_pattern = f"anomaly_detection_{args.dataset}_TimesNet_{args.dataset}_*"
-    checkpoints_dir = tslib_path / "checkpoints"
     
-    matching = list(checkpoints_dir.glob(f"{checkpoint_pattern}/checkpoint.pth"))
+    # Check TSLib directory checkpoints
+    checkpoints_base = tslib_path / "checkpoints"
+    matching = []
+    if checkpoints_base.exists():
+        matching = list(checkpoints_base.glob(f"{checkpoint_pattern}/checkpoint.pth"))
+    
     if not matching:
-        print(f"❌ Checkpoint not found in {checkpoints_dir}")
+        print(f"❌ Checkpoint not found")
+        print(f"   Searched in: checkpoints/, {tslib_path / 'checkpoints'}")
         sys.exit(1)
     
     # Use the most recent

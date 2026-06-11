@@ -2,15 +2,23 @@
 name = "anomaly-detection"
 version = "0.1.0"
 description = "TimesNet-based anomaly detection service"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.13"
 dependencies = [
     "pydantic-settings>=2.0",
     "structlog>=24.0",
     "httpx>=0.27",
     "prometheus-client>=0.20",
     "aiohttp>=3.9",
-    "numpy>=2.4.6",
+    "numpy>=1.26,<3",
     "onnxruntime>=1.18",
+    "pandas>=3.0.3",
+    "scikit-learn>=1.9.0",
+    "patool>=4.0.5",
+    "tqdm>=4.68.2",
+    "einops>=0.8.2",
+    "huggingface-hub>=1.18.0",
+    "reformer-pytorch>=1.4.4",
+    "local-attention>=1.11.2",
 ]
 
 [project.optional-dependencies]
@@ -21,6 +29,9 @@ dev = [
     "ruff>=0.4",
     "mypy>=1.10",
     "pre-commit>=3.7",
+]
+train = [
+    "torch>=2.0",
 ]
 
 [build-system]
@@ -63,8 +74,3 @@ python_version = "3.11"
 strict = true
 ignore_missing_imports = true
 warn_return_any = false
-
-[dependency-groups]
-dev = [
-    "numpy>=2.4.6",
-]
