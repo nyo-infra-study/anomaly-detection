@@ -76,11 +76,14 @@ Uses exponential moving average (EMA) for more stable baselines across cycles.
 
 ### 4. TimesNet (CNN-based, needs trained model)
 ```bash
-# First, get a model (see scripts/download_model.py)
-python scripts/download_model.py --train --dataset SMD
+# Train using Time-Series-Library (requires dataset download)
+python scripts/train.py --dataset SMD
 
-# Then run
-DETECTOR_TYPE=timesnet make run
+# Export to ONNX for faster inference
+python scripts/export_onnx.py
+
+# Run with ONNX model
+DETECTOR_TYPE=timesnet MODEL_PATH=models/timesnet.onnx make run
 ```
 
 ### 5. Auto (default)

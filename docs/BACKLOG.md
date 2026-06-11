@@ -11,15 +11,29 @@ Unfinished work and future improvements.
 - GitHub Actions workflow for lint/test/build
 - Pre-commit hooks setup
 
+### Dataset Download
+- Anomaly detection datasets need to be downloaded from:
+  - [Google Drive](https://drive.google.com/drive/folders/13Cg1KYOlzM5C7K8gK8NfC-F3EYxkM3D2)
+  - [Hugging Face](https://huggingface.co/datasets/thuml/Time-Series-Library)
+- Extract to `Time-Series-Library/dataset/`
+
+## Ready to Use
+
 ### Training Pipeline
-- `scripts/train.py` using Time-Series-Library
-- `scripts/export_onnx.py` for optimized inference
-- Currently only `scripts/download_model.py` exists
+- `scripts/train.py` - Train TimesNet using Time-Series-Library
+- `scripts/export_onnx.py` - Export to ONNX for faster inference
+
+```bash
+# 1. Train on SMD dataset (requires dataset download first)
+python scripts/train.py --dataset SMD
+
+# 2. Export to ONNX
+python scripts/export_onnx.py
+```
 
 ## Future Improvements
 
 ### Model
-- [ ] ONNX export for faster inference without PyTorch
 - [ ] Pattern-based models (one model per service pattern)
 - [ ] Online learning / periodic retraining
 

@@ -10,6 +10,7 @@ dependencies = [
     "prometheus-client>=0.20",
     "aiohttp>=3.9",
     "numpy>=2.4.6",
+    "onnxruntime>=1.18",
 ]
 
 [project.optional-dependencies]
