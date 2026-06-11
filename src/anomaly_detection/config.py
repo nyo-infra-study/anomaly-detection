@@ -13,10 +13,17 @@ class Settings(BaseSettings):
     prometheus_query: str = "up"
     fetch_interval_seconds: int = 60
 
-    # Model
+    # Model / Detector
     model_path: str = "models/timesnet.pt"
     window_size: int = 96
     anomaly_threshold: float = 0.75
+
+    # Detector type: "auto", "timesnet", "statistical", "rolling", "mock"
+    detector_type: str = "auto"
+
+    # Statistical detector settings
+    z_threshold: float = 2.5  # Z-score threshold for anomaly
+    ema_alpha: float = 0.1  # EMA smoothing factor for rolling detector
 
     # Output
     pushgateway_url: str | None = None
